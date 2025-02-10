@@ -101,7 +101,7 @@ jobs:
 
       - name: Upload task-definition.json for debugging
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: task-definition
           path: .aws/task-definition.json
