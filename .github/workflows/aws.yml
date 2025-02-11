@@ -88,7 +88,7 @@ jobs:
           sed -e "s|YOUR_AWS_ACCOUNT_ID|${{ secrets.AWS_ACCOUNT_ID }}|g" \
              -e "s|YOUR_ECR_IMAGE_URI|${{ steps.build-image.outputs.image }}|g" \
              -e "s|YOUR_ARN_SECRET_MANAGER|${{ secrets.ARN_SECRET_MANAGER }}|g" \
-             .aws/task-definition-template.json > .aws/task-definition.json
+             .aws/task-definition-template.json >> .aws/task-definition.json
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
@@ -100,10 +100,10 @@ jobs:
 
       - name: Notify Slack on Failure
         if: failure()
-        uses: slackapi/slack-github-action@v1
+        uses: slackapi/slack-github-action@v2
         with:
           channel-id: '#ci-cd' # Replace with your Slack channel name or ID
-          slack-message: 'Workflow failed! Check the logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+          slack-message: 'Workflow failed! Check the logs'
         env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
 
