@@ -77,6 +77,9 @@ jobs:
           ./mvnw -Pprod package verify jib:build -Dimage=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG || exit 1
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+      - name: Debug Image URI
+        run: |
           echo "ECR_REGISTRY: $ECR_REGISTRY"
           echo "ECR_REPOSITORY: $ECR_REPOSITORY"
           echo "IMAGE_TAG: $IMAGE_TAG"
@@ -106,6 +109,13 @@ jobs:
           slack-message: 'Workflow failed! Check the logs'
         env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+
+      - name: Upload task-definition.json for debugging
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: task-definition
+          path: .aws/task-definition.json
 
       - name: Upload task-definition.json for debugging
         if: failure()
