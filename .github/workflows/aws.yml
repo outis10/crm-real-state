@@ -105,7 +105,7 @@ jobs:
           channel-id: '#ci-cd' # Replace with your Slack channel name or ID
           slack-message: 'Workflow failed! Check the logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
 
       - name: Upload task-definition.json for debugging
         if: failure()
