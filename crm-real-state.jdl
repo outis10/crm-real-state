@@ -1,0 +1,215 @@
+
+
+entity Attachment {
+	file Blob required
+    entityId Long required
+    entityName EntityNameEnum
+
+}
+enum EntityNameEnum {
+    PROPERTY(Property)
+    CUSTOMER(Customer)
+    RENTAL_CONTRACT(Rental)
+}
+entity Contact {
+  firstName String required minlength(2) maxlength(100),
+  middleName String minlength(2) maxlength(100),
+  lastName String  minlength(2) maxlength(100),
+  email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+  phone String pattern(/^\+?[1-9]\d{1,14}$/),
+  address String,
+  city String,
+  state String
+  postalCode String pattern(/^\d{5}(-\d{4})?$/)
+  country String,
+  socialMediaProfiles String,
+  notes TextBlob
+}
+
+entity Opportunity {
+  name String required minlength(2) maxlength(100),
+  budget BigDecimal min(0)
+  amount BigDecimal required min(0),
+  probability Integer required min(0) max(100),
+  expectedCloseDate LocalDate required,
+  stage OpportunityStageEnum required,
+  description TextBlob,
+  createdAt Instant required,
+  modifiedAt Instant,
+  closedAt Instant
+}
+enum OpportunityStageEnum {
+  PROSPECTING (Prospecting),
+  QUALIFICATION (Qualification),
+  PROPOSAL (Proposal),
+  NEGOTIATION (Negotiation),
+  CLOSED_WON (Won),
+  CLOSED_LOST (Lost)
+}
+
+entity NearbyLocation {
+  name String required,
+  type String required, // Escuela, Hospital, Parque, etc.
+  distance Double required, // Distancia en km o metros
+  coordinates String // Coordenadas GPS opcionales
+}
+
+
+entity Property {
+  name String required,
+  codeName String
+  type String required, // Casa, Departamento, Terreno, etc.
+  operationType OperationTypeEnum required // Venta, Renta
+  location String required, // Dirección completa
+  city String required,
+  state String required,
+  postalCode String required,
+  price BigDecimal required,
+  rentalPrice BigDecimal, // Precio de renta (opcional si es solo venta)
+  area Integer required, // Tamaño en metros cuadrados
+  bedrooms Integer,
+  bathrooms Integer,
+  appreciationRate Double, // Plusvalía en porcentaje
+  features String, // Características adicionales
+  status PropertyStatusEnum required, // Disponible, Vendida, Rentada, etc.
+  images String // URLs separadas por comas
+}
+
+
+enum OperationTypeEnum {
+  SALES (Sales)
+  LEASE (Lease)
+}
+
+enum PropertyStatusEnum {
+  AVAILABLE (Available)
+  SOLD (Sold)
+  LEASED (Leased)
+}
+
+
+entity RentalContract {
+  startDate Instant required,
+  endDate Instant required,
+  monthlyRent BigDecimal required,
+  securityDeposit BigDecimal,
+  status ContractStatusEnum required // Activo, Finalizado, Cancelado
+}
+
+enum ContractStatusEnum {
+	ACTIVE (Active)
+	FINISHED (Finished)
+  CANCELED (Canceled)
+}
+
+entity Charge {
+  type ChargeTypeEnum required, // Renta, Mantenimiento, Otros
+  amount BigDecimal required,
+  dueDate Instant required,
+  status ChargeStatusEnum required// Pendiente, Pagado, Retrasado
+}
+enum ChargeTypeEnum {
+	LEASE (Lease)
+    MAINTAIN (Maintain)
+    INSTALLMENT_PAYMENT (Installment_Payment)
+    OTHER (Other)
+}
+enum ChargeStatusEnum {
+	PENDING (Pending)
+    PAID (Paid)
+    OVERDUE (Overdue)
+    IN_REVIEW (In_review)
+
+}
+
+entity Payment {
+  amount BigDecimal required,
+  paymentDate Instant required,
+  paymentMethod PaymentMethodEnum required, // Transferencia, Tarjeta, Efectivo
+  reference String // Referencia del pago
+}
+
+enum PaymentMethodEnum {
+	TRANSFER (Transfer)
+    CARD (Card)
+    CASH (Cash)
+}
+
+entity Customer {
+  firstName String required minlength(2) maxlength(100),
+  middleName String minlength(2) maxlength(100),
+  lastName String  minlength(2) maxlength(100),
+  email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/),
+  phone String pattern(/^\+?[1-9]\d{1,14}$/),
+  address String
+  city String
+  state String
+  postalCode String pattern(/^\d{5}(-\d{4})?$/),
+  country String,
+  socialMediaProfiles String,
+  notes TextBlob
+  preferences String, // Preferencias como texto libre
+  budget BigDecimal, // Presupuesto máximo
+  rentalBudget BigDecimal, // Presupuesto máximo para renta
+  interactionHistory TextBlob // Registro de interacciones con el chatbot
+}
+
+entity ChatInteraction {
+  customerMessage String required,
+  chatbotResponse String required,
+  timestamp Instant required
+}
+
+entity Notification {
+  target NotificationTargetEnum required, // Nueva propiedad, descuento, etc.
+  content String required, // Descripción
+  status NotificationStatusEnum required, // Enviada, Vista
+  timestamp Instant required
+}
+enum NotificationTargetEnum {
+	NEW
+    DISCOUNT
+    AD
+    OVERDUE
+    THANKS
+}
+
+enum NotificationStatusEnum {
+	NEW
+	SENT
+    VIEWED,
+    FAILED
+}
+
+entity Quotation {
+  finalPrice BigDecimal required,
+  validityDate Instant required, // Fecha límite de la cotización
+  comments String
+}
+
+// Relaciones
+relationship OneToMany {
+  Property to NearbyLocation {property(codeName) required}
+  RentalContract to Charge {rentalContract required}
+  RentalContract to Payment {rentralContract required}
+}
+
+relationship ManyToOne {
+  ChatInteraction to Customer
+  Notification to Customer
+  Quotation to Customer
+  Quotation to Property
+  RentalContract to Property
+  RentalContract to Customer
+  Charge to Customer
+}
+relationship ManyToOne {
+  Opportunity {customer (email) required} to Customer
+  Opportunity to Property
+  Contact to Customer
+}
+// DTOs y Opciones
+dto * with mapstruct
+paginate all with pagination except Property
+paginate Property with infinite-scroll
+service all with serviceImpl

@@ -1,0 +1,27 @@
+{
+  "crmRealStateApp": {
+    "chatInteraction": {
+      "home": {
+        "title": "Chat Interactions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Chat Interaction",
+        "createOrEditLabel": "Create or edit a Chat Interaction",
+        "notFound": "No Chat Interactions found"
+      },
+      "created": "A new Chat Interaction is created with identifier {{ param }}",
+      "updated": "A Chat Interaction is updated with identifier {{ param }}",
+      "deleted": "A Chat Interaction is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Chat Interaction {{ id }}?"
+      },
+      "detail": {
+        "title": "Chat Interaction"
+      },
+      "id": "ID",
+      "customerMessage": "Customer Message",
+      "chatbotResponse": "Chatbot Response",
+      "timestamp": "Timestamp",
+      "customer": "Customer"
+    }
+  }
+}
