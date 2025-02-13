@@ -1,0 +1,11 @@
+id;name;budget;amount;probability;expected_close_date;stage;description;created_at;modified_at;closed_at;customer_id
+1;elegantly dead;560.04;11347.63;44;2025-02-12;PROPOSAL;../fake-data/blob/hipster.txt;2025-02-12T23:22:02;2025-02-12T09:06:46;2025-02-12T15:43:06;1
+2;exotic because;5875.9;7625.02;96;2025-02-12;CLOSED_WON;../fake-data/blob/hipster.txt;2025-02-12T22:03:51;2025-02-12T02:45:11;2025-02-12T23:44:41;2
+3;proper popularize;28936;10847.72;88;2025-02-12;CLOSED_LOST;../fake-data/blob/hipster.txt;2025-02-12T16:02:17;2025-02-12T19:13:31;2025-02-12T13:16:51;3
+4;aha really when;26748.39;30324.18;43;2025-02-12;CLOSED_WON;../fake-data/blob/hipster.txt;2025-02-12T00:48:17;2025-02-12T16:25:01;2025-02-12T21:25:24;4
+5;battle dream happily;15226.42;26043.23;45;2025-02-12;CLOSED_WON;../fake-data/blob/hipster.txt;2025-02-12T16:13:17;2025-02-12T20:04:10;2025-02-12T14:27:38;5
+6;wilt supposing;210.86;10003.23;38;2025-02-12;PROSPECTING;../fake-data/blob/hipster.txt;2025-02-12T10:22:07;2025-02-12T00:35:34;2025-02-12T23:02:49;6
+7;amid;15936.61;5221.88;71;2025-02-12;QUALIFICATION;../fake-data/blob/hipster.txt;2025-02-12T10:43:42;2025-02-12T03:51:37;2025-02-12T20:45:29;7
+8;yuck;8572.87;28013.99;82;2025-02-12;CLOSED_WON;../fake-data/blob/hipster.txt;2025-02-12T18:37:49;2025-02-12T14:11:41;2025-02-12T22:05:38;8
+9;joshingly ordinary coaxingly;32047.68;29406.28;16;2025-02-12;PROPOSAL;../fake-data/blob/hipster.txt;2025-02-12T13:14:48;2025-02-12T17:49:23;2025-02-12T01:18:51;9
+10;blond;27440.07;1965.66;52;2025-02-12;CLOSED_WON;../fake-data/blob/hipster.txt;2025-02-12T21:07:42;2025-02-12T12:33:01;2025-02-12T17:12:09;10
