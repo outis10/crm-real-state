@@ -1,0 +1,68 @@
+{
+  "annotations": {
+    "changelogDate": "20250213002717"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "startDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "monthlyRent",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "securityDeposit",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ContractStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE (Active),FINISHED (Finished),CANCELED (Canceled)"
+    }
+  ],
+  "name": "RentalContract",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "charge",
+      "otherEntityRelationshipName": "rentalContract",
+      "relationshipName": "charge",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "payment",
+      "otherEntityRelationshipName": "rentralContract",
+      "relationshipName": "payment",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "property",
+      "otherEntityRelationshipName": "rentalContract",
+      "relationshipName": "property",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "rentalContract",
+      "relationshipName": "customer",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

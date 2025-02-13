@@ -1,0 +1,10 @@
+{
+  "crmRealStateApp": {
+    "ContractStatusEnum": {
+      "null": "",
+      "ACTIVE": "Active",
+      "FINISHED": "Finished",
+      "CANCELED": "Canceled"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "crmRealStateApp": {
+    "rentalContract": {
+      "home": {
+        "title": "Rental Contracts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Rental Contract",
+        "createOrEditLabel": "Create or edit a Rental Contract",
+        "notFound": "No Rental Contracts found"
+      },
+      "created": "A new Rental Contract is created with identifier {{ param }}",
+      "updated": "A Rental Contract is updated with identifier {{ param }}",
+      "deleted": "A Rental Contract is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Rental Contract {{ id }}?"
+      },
+      "detail": {
+        "title": "Rental Contract"
+      },
+      "id": "ID",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "monthlyRent": "Monthly Rent",
+      "securityDeposit": "Security Deposit",
+      "status": "Status",
+      "charge": "Charge",
+      "payment": "Payment",
+      "property": "Property",
+      "customer": "Customer"
+    }
+  }
+}

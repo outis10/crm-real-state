@@ -1,0 +1,42 @@
+{
+  "annotations": {
+    "changelogDate": "20250213002719"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "paymentDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "paymentMethod",
+      "fieldType": "PaymentMethodEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "TRANSFER (Transfer),CARD (Card),CASH (Cash)"
+    },
+    {
+      "fieldName": "reference",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Payment",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "rentalContract",
+      "relationshipName": "rentralContract",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

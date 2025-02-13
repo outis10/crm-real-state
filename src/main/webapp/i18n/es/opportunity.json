@@ -1,0 +1,35 @@
+{
+  "crmRealStateApp": {
+    "opportunity": {
+      "home": {
+        "title": "Opportunities",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Opportunity",
+        "createOrEditLabel": "Crear o editar Opportunity",
+        "notFound": "Ningún Opportunities encontrado"
+      },
+      "created": "Un nuevo Opportunity ha sido creado con el identificador {{ param }}",
+      "updated": "Un Opportunity ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Opportunity ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Opportunity {{ id }}?"
+      },
+      "detail": {
+        "title": "Opportunity"
+      },
+      "id": "ID",
+      "name": "Name",
+      "budget": "Budget",
+      "amount": "Amount",
+      "probability": "Probability",
+      "expectedCloseDate": "Expected Close Date",
+      "stage": "Stage",
+      "description": "Description",
+      "createdAt": "Created At",
+      "modifiedAt": "Modified At",
+      "closedAt": "Closed At",
+      "customer": "Customer",
+      "property": "Property"
+    }
+  }
+}

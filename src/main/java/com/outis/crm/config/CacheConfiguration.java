@@ -50,6 +50,30 @@ public class CacheConfiguration {
             createCache(cm, com.outis.crm.domain.User.class.getName());
             createCache(cm, com.outis.crm.domain.Authority.class.getName());
             createCache(cm, com.outis.crm.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.outis.crm.domain.Attachment.class.getName());
+            createCache(cm, com.outis.crm.domain.Contact.class.getName());
+            createCache(cm, com.outis.crm.domain.Opportunity.class.getName());
+            createCache(cm, com.outis.crm.domain.NearbyLocation.class.getName());
+            createCache(cm, com.outis.crm.domain.Property.class.getName());
+            createCache(cm, com.outis.crm.domain.Property.class.getName() + ".nearbyLocations");
+            createCache(cm, com.outis.crm.domain.Property.class.getName() + ".quotations");
+            createCache(cm, com.outis.crm.domain.Property.class.getName() + ".rentalContracts");
+            createCache(cm, com.outis.crm.domain.Property.class.getName() + ".opportunities");
+            createCache(cm, com.outis.crm.domain.RentalContract.class.getName());
+            createCache(cm, com.outis.crm.domain.RentalContract.class.getName() + ".charges");
+            createCache(cm, com.outis.crm.domain.RentalContract.class.getName() + ".payments");
+            createCache(cm, com.outis.crm.domain.Charge.class.getName());
+            createCache(cm, com.outis.crm.domain.Payment.class.getName());
+            createCache(cm, com.outis.crm.domain.Customer.class.getName());
+            createCache(cm, com.outis.crm.domain.Customer.class.getName() + ".chatInteractions");
+            createCache(cm, com.outis.crm.domain.Customer.class.getName() + ".notifications");
+            createCache(cm, com.outis.crm.domain.Customer.class.getName() + ".quotations");
+            createCache(cm, com.outis.crm.domain.Customer.class.getName() + ".rentalContracts");
+            createCache(cm, com.outis.crm.domain.Customer.class.getName() + ".charges");
+            createCache(cm, com.outis.crm.domain.Customer.class.getName() + ".contacts");
+            createCache(cm, com.outis.crm.domain.ChatInteraction.class.getName());
+            createCache(cm, com.outis.crm.domain.Notification.class.getName());
+            createCache(cm, com.outis.crm.domain.Quotation.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

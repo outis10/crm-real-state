@@ -1,0 +1,12 @@
+{
+  "crmRealStateApp": {
+    "NotificationTargetEnum": {
+      "null": "",
+      "NEW": "NEW",
+      "DISCOUNT": "DISCOUNT",
+      "AD": "AD",
+      "OVERDUE": "OVERDUE",
+      "THANKS": "THANKS"
+    }
+  }
+}

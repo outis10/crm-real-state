@@ -1,0 +1,36 @@
+{
+  "crmRealStateApp": {
+    "contact": {
+      "home": {
+        "title": "Contactos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Contacto",
+        "createOrEditLabel": "Crear o editar Contacto",
+        "notFound": "Ningún Contacto encontrado"
+      },
+      "created": "Un nuevo Contacto ha sido creado con el identificador {{ param }}",
+      "updated": "Un Contacto ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Contacto ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Contacto {{ id }}?"
+      },
+      "detail": {
+        "title": "Contacto"
+      },
+      "id": "ID",
+      "firstName": "Nombre",
+      "middleName": "Apellido Paterno",
+      "lastName": "Apellido Materno",
+      "email": "Correo",
+      "phone": "Teléfono",
+      "address": "Dirección",
+      "city": "Ciudad",
+      "state": "Estado",
+      "postalCode": "Código Postal",
+      "country": "País",
+      "socialMediaProfiles": "Social Media Profiles",
+      "notes": "Notas",
+      "customer": "Clientes"
+    }
+  }
+}

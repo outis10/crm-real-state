@@ -38,8 +38,6 @@ env:
   ECS_TASK_DEFINITION: .aws/task-definition.json # set this to the path to your Amazon ECS task definition
   # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: ${{ secrets.CONTAINER_NAME }} # set this to the name of the container in the
-  # containerDefinitions section of your task definition
-  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
 
 permissions:
   contents: write
@@ -72,7 +70,7 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ github.sha }}
+          IMAGE_TAG: latest
         run: |
           ./mvnw -Pprod package verify jib:build -Dimage=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG || exit 1
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
@@ -102,7 +100,7 @@ jobs:
           payload: |
             {
               "channel": "#ci-cd",  # Replace with your Slack channel name or ID
-              "text": "Workflow failed! Check the logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+              "text": "Workflow failed! Check the logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\nBranch: ${{ github.ref }}\nCommit: ${{ github.event.head_commit.message }}"
             }
 
       - name: Debug Image URI

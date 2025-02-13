@@ -1,0 +1,28 @@
+{
+  "crmRealStateApp": {
+    "quotation": {
+      "home": {
+        "title": "Quotations",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Quotation",
+        "createOrEditLabel": "Crear o editar Quotation",
+        "notFound": "Ningún Quotations encontrado"
+      },
+      "created": "Un nuevo Quotation ha sido creado con el identificador {{ param }}",
+      "updated": "Un Quotation ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Quotation ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Quotation {{ id }}?"
+      },
+      "detail": {
+        "title": "Quotation"
+      },
+      "id": "ID",
+      "finalPrice": "Final Price",
+      "validityDate": "Validity Date",
+      "comments": "Comments",
+      "customer": "Customer",
+      "property": "Property"
+    }
+  }
+}

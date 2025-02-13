@@ -7,7 +7,19 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "attachment": "Attachment",
+        "contact": "Contact",
+        "opportunity": "Opportunity",
+        "nearbyLocation": "Nearby Location",
+        "property": "Property",
+        "rentalContract": "Rental Contract",
+        "charge": "Charge",
+        "payment": "Payment",
+        "customer": "Customer",
+        "chatInteraction": "Chat Interaction",
+        "notification": "Notification",
+        "quotation": "Quotation"
       },
       "account": {
         "main": "Account",
