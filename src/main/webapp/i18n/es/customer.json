@@ -1,0 +1,45 @@
+{
+  "crmRealStateApp": {
+    "customer": {
+      "home": {
+        "title": "Customers",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Customer",
+        "createOrEditLabel": "Crear o editar Customer",
+        "notFound": "Ningún Customers encontrado"
+      },
+      "created": "Un nuevo Customer ha sido creado con el identificador {{ param }}",
+      "updated": "Un Customer ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Customer ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Customer {{ id }}?"
+      },
+      "detail": {
+        "title": "Customer"
+      },
+      "id": "ID",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "city": "City",
+      "state": "State",
+      "postalCode": "Postal Code",
+      "country": "Country",
+      "socialMediaProfiles": "Social Media Profiles",
+      "notes": "Notes",
+      "preferences": "Preferences",
+      "budget": "Budget",
+      "rentalBudget": "Rental Budget",
+      "interactionHistory": "Interaction History",
+      "chatInteraction": "Chat Interaction",
+      "notification": "Notification",
+      "quotation": "Quotation",
+      "rentalContract": "Rental Contract",
+      "charge": "Charge",
+      "contact": "Contact"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "annotations": {
+    "changelogDate": "20250213002722"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "target",
+      "fieldType": "NotificationTargetEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "NEW,DISCOUNT,AD,OVERDUE,THANKS"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "NotificationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "NEW,SENT,VIEWED,FAILED"
+    },
+    {
+      "fieldName": "timestamp",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Notification",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "notification",
+      "relationshipName": "customer",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

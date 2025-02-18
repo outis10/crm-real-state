@@ -1,0 +1,44 @@
+{
+  "crmRealStateApp": {
+    "property": {
+      "home": {
+        "title": "Properties",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Property",
+        "createOrEditLabel": "Create or edit a Property",
+        "notFound": "No Properties found"
+      },
+      "created": "A new Property is created with identifier {{ param }}",
+      "updated": "A Property is updated with identifier {{ param }}",
+      "deleted": "A Property is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Property {{ id }}?"
+      },
+      "detail": {
+        "title": "Property"
+      },
+      "id": "ID",
+      "name": "Name",
+      "codeName": "Code Name",
+      "type": "Type",
+      "operationType": "Operation Type",
+      "location": "Location",
+      "city": "City",
+      "state": "State",
+      "postalCode": "Postal Code",
+      "price": "Price",
+      "rentalPrice": "Rental Price",
+      "area": "Area",
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms",
+      "appreciationRate": "Appreciation Rate",
+      "features": "Features",
+      "status": "Status",
+      "images": "Images",
+      "nearbyLocation": "Nearby Location",
+      "quotation": "Quotation",
+      "rentalContract": "Rental Contract",
+      "opportunity": "Opportunity"
+    }
+  }
+}

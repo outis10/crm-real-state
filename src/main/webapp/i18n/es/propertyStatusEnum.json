@@ -1,0 +1,10 @@
+{
+  "crmRealStateApp": {
+    "PropertyStatusEnum": {
+      "null": "",
+      "AVAILABLE": "Available",
+      "SOLD": "Sold",
+      "LEASED": "Leased"
+    }
+  }
+}

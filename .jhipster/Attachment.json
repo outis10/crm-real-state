@@ -1,0 +1,29 @@
+{
+  "annotations": {
+    "changelogDate": "20250213002712"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "file",
+      "fieldType": "Blob",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "entityId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "entityName",
+      "fieldType": "EntityNameEnum",
+      "fieldValues": "PROPERTY (Property),CUSTOMER (Customer),RENTAL_CONTRACT (Rental)"
+    }
+  ],
+  "name": "Attachment",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

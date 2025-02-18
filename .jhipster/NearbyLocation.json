@@ -1,0 +1,42 @@
+{
+  "annotations": {
+    "changelogDate": "20250213002715"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "distance",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "coordinates",
+      "fieldType": "String"
+    }
+  ],
+  "name": "NearbyLocation",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "codeName",
+      "otherEntityName": "property",
+      "relationshipName": "property",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

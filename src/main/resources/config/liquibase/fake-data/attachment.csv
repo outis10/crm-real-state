@@ -1,0 +1,11 @@
+id;file;file_content_type;entity_id;entity_name
+1;../fake-data/blob/hipster.png;image/png;25851;CUSTOMER
+2;../fake-data/blob/hipster.png;image/png;22237;RENTAL_CONTRACT
+3;../fake-data/blob/hipster.png;image/png;6443;RENTAL_CONTRACT
+4;../fake-data/blob/hipster.png;image/png;12097;RENTAL_CONTRACT
+5;../fake-data/blob/hipster.png;image/png;11189;PROPERTY
+6;../fake-data/blob/hipster.png;image/png;214;RENTAL_CONTRACT
+7;../fake-data/blob/hipster.png;image/png;30510;RENTAL_CONTRACT
+8;../fake-data/blob/hipster.png;image/png;14071;CUSTOMER
+9;../fake-data/blob/hipster.png;image/png;27835;CUSTOMER
+10;../fake-data/blob/hipster.png;image/png;22941;CUSTOMER

@@ -1,0 +1,51 @@
+{
+  "annotations": {
+    "changelogDate": "20250213002718"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "ChargeTypeEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "LEASE (Lease),MAINTAIN (Maintain),INSTALLMENT_PAYMENT (Installment_Payment),OTHER (Other)"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dueDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ChargeStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PENDING (Pending),PAID (Paid),OVERDUE (Overdue),IN_REVIEW (In_review)"
+    }
+  ],
+  "name": "Charge",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "charge",
+      "relationshipName": "customer",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "rentalContract",
+      "relationshipName": "rentalContract",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

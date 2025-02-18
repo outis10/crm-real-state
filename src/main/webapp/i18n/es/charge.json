@@ -1,0 +1,29 @@
+{
+  "crmRealStateApp": {
+    "charge": {
+      "home": {
+        "title": "Charges",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Charge",
+        "createOrEditLabel": "Crear o editar Charge",
+        "notFound": "Ningún Charges encontrado"
+      },
+      "created": "Un nuevo Charge ha sido creado con el identificador {{ param }}",
+      "updated": "Un Charge ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Charge ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Charge {{ id }}?"
+      },
+      "detail": {
+        "title": "Charge"
+      },
+      "id": "ID",
+      "type": "Type",
+      "amount": "Amount",
+      "dueDate": "Due Date",
+      "status": "Status",
+      "customer": "Customer",
+      "rentalContract": "Rental Contract"
+    }
+  }
+}

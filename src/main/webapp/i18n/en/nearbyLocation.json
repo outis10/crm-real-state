@@ -1,0 +1,28 @@
+{
+  "crmRealStateApp": {
+    "nearbyLocation": {
+      "home": {
+        "title": "Nearby Locations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Nearby Location",
+        "createOrEditLabel": "Create or edit a Nearby Location",
+        "notFound": "No Nearby Locations found"
+      },
+      "created": "A new Nearby Location is created with identifier {{ param }}",
+      "updated": "A Nearby Location is updated with identifier {{ param }}",
+      "deleted": "A Nearby Location is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Nearby Location {{ id }}?"
+      },
+      "detail": {
+        "title": "Nearby Location"
+      },
+      "id": "ID",
+      "name": "Name",
+      "type": "Type",
+      "distance": "Distance",
+      "coordinates": "Coordinates",
+      "property": "Property"
+    }
+  }
+}
