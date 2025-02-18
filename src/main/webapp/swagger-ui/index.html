@@ -17,7 +17,7 @@
     <script src="./axios.min.js"></script>
 
     <script type="text/javascript">
-      const AlwaysEnableTryItOutPlugin = function () {
+      const AlwaysEnableTryItOutPlugin = function (system) {
         return {
           components: {
             TryItOutButton: () => null,
@@ -76,7 +76,7 @@
 
       function initializeSwaggerUI(urls, baseUrl) {
         // Build a system
-        const ui = SwaggerUIBundle({
+        var ui = SwaggerUIBundle({
           urls: urls,
           url: baseUrl,
           dom_id: '#swagger-ui',
