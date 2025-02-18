@@ -95,7 +95,7 @@ public class UserResource {
     /**
      * {@code POST  /admin/users}  : Creates a new user.
      * <p>
-     * Creates a new user if the login and email are not already used, and sends a
+     * Creates a new user if the login and email are not already used, and sends an
      * mail with an activation link.
      * The user needs to be activated on creation.
      *
