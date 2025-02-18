@@ -30,7 +30,7 @@
       "Quotation"
     ],
     "feignClient": null,
-    "jhipsterVersion": "8.8.0",
+    "jhipsterVersion": "8.9.0",
     "jwtSecretKey": "M2NiMDNjZDVjNDQ4ZjU4MTU4YWRlOGM3MzhiOWQ2ZTlkMjQ4MzI0NTNmMjE4MWZhMGQ1NzI1YmJhNTI4ODg1MDBkNTcxNjMxNTE3NGZiNmQ4NTc5MjhlNDdmNmUxNGExYzFjMzE3NzM4MmQ3N2Q2OGEwMWM1ZDlhNzc4MTI2NTg=",
     "languages": ["es", "en"],
     "lastLiquibaseTimestamp": 1739406443000,
