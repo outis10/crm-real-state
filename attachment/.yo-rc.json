@@ -1,0 +1,27 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 3,
+    "applicationType": "microservice",
+    "authenticationType": "jwt",
+    "baseName": "attachment",
+    "buildTool": "maven",
+    "clientFramework": "react",
+    "creationTimestamp": 1740593059608,
+    "devDatabaseType": "postgresql",
+    "devServerPort": 9063,
+    "entities": ["Attachment"],
+    "jhipsterVersion": "8.9.0",
+    "jwtSecretKey": "MDdhY2E1MGE5ZjUwM2UxNjMwNzUzMWNiNzRjYTQ0ZjZiMjY1ZjZmZGM4NzVhNzZjNTY1NWE1N2I5ZDE2ZTUzNzI1MzM2ODdmYTFiZTZhNjJhZjFmMDg3NGZhNGI3YzJlZmM4Yzg2ZDYxMjBhODEyMjBmYWM1ZGNiYzdhOTNhNGQ=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1740544634000,
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "packageName": "com.outis.realstate.attachment",
+    "prodDatabaseType": "postgresql",
+    "serverPort": "8083",
+    "serviceDiscoveryType": "consul",
+    "skipCommitHook": true,
+    "skipUserManagement": true,
+    "testFrameworks": ["cypress"]
+  }
+}

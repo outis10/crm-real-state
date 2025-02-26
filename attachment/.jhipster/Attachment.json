@@ -1,0 +1,32 @@
+{
+  "annotations": {
+    "changelogDate": "20250226043714"
+  },
+  "applications": ["attachment"],
+  "clientRootFolder": "attachment",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "file",
+      "fieldType": "Blob",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "entityId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "entityName",
+      "fieldType": "EntityNameEnum",
+      "fieldValues": "PROPERTY (Property),CUSTOMER (Customer),RENTAL_CONTRACT (Rental)"
+    }
+  ],
+  "microserviceName": "attachment",
+  "name": "Attachment",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
