@@ -1,0 +1,10 @@
+{
+  "propertyManagementApp": {
+    "SaleStatusEnum": {
+      "null": "",
+      "PENDING": "PENDING",
+      "COMPLETED": "COMPLETED",
+      "CANCELLED": "CANCELLED"
+    }
+  }
+}

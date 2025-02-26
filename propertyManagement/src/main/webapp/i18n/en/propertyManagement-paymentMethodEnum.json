@@ -1,0 +1,10 @@
+{
+  "propertyManagementApp": {
+    "PaymentMethodEnum": {
+      "null": "",
+      "TRANSFER": "Transfer",
+      "CARD": "Card",
+      "CASH": "Cash"
+    }
+  }
+}
