@@ -5,7 +5,7 @@ import { TranslatorContext } from 'react-jhipster';
 
 import locale, { addTranslationSourcePrefix, loaded, setLocale, updateLocale } from 'app/shared/reducers/locale';
 
-const defaultLocale = 'en';
+const defaultLocale = 'es';
 const dispatch = jest.fn();
 const extra = {};
 

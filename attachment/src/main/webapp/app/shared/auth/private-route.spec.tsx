@@ -12,7 +12,7 @@ const TestComp = () => <div>Test</div>;
 
 describe('private-route component', () => {
   beforeAll(() => {
-    TranslatorContext.registerTranslations('en', {
+    TranslatorContext.registerTranslations('es', {
       'error.http.403': 'You are not authorized to access this page.',
     });
   });
@@ -86,7 +86,7 @@ describe('private-route component', () => {
             </PrivateRoute>
           }
         />
-        <Route path="/login" element={<div>Login</div>} />
+        <Route path="/sign-in" element={<div>Login</div>} />
       </Routes>,
       {
         isAuthenticated: false,

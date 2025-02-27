@@ -40,6 +40,10 @@ public class Attachment implements Serializable {
     @Column(name = "entity_name")
     private EntityNameEnum entityName;
 
+    @NotNull
+    @Column(name = "created_by", nullable = false)
+    private Long createdBy;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -107,6 +111,19 @@ public class Attachment implements Serializable {
         this.entityName = entityName;
     }
 
+    public Long getCreatedBy() {
+        return this.createdBy;
+    }
+
+    public Attachment createdBy(Long createdBy) {
+        this.setCreatedBy(createdBy);
+        return this;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -135,6 +152,7 @@ public class Attachment implements Serializable {
             ", fileContentType='" + getFileContentType() + "'" +
             ", entityId=" + getEntityId() +
             ", entityName='" + getEntityName() + "'" +
+            ", createdBy=" + getCreatedBy() +
             "}";
     }
 }

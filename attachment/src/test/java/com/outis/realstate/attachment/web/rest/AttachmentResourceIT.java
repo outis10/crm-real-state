@@ -4,6 +4,7 @@ import static com.outis.realstate.attachment.domain.AttachmentAsserts.*;
 import static com.outis.realstate.attachment.web.rest.TestUtil.createUpdateProxyForBean;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -47,6 +48,9 @@ class AttachmentResourceIT {
     private static final EntityNameEnum DEFAULT_ENTITY_NAME = EntityNameEnum.PROPERTY;
     private static final EntityNameEnum UPDATED_ENTITY_NAME = EntityNameEnum.CUSTOMER;
 
+    private static final Long DEFAULT_CREATED_BY = 1L;
+    private static final Long UPDATED_CREATED_BY = 2L;
+
     private static final String ENTITY_API_URL = "/api/attachments";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -83,7 +87,8 @@ class AttachmentResourceIT {
             .file(DEFAULT_FILE)
             .fileContentType(DEFAULT_FILE_CONTENT_TYPE)
             .entityId(DEFAULT_ENTITY_ID)
-            .entityName(DEFAULT_ENTITY_NAME);
+            .entityName(DEFAULT_ENTITY_NAME)
+            .createdBy(DEFAULT_CREATED_BY);
     }
 
     /**
@@ -97,7 +102,8 @@ class AttachmentResourceIT {
             .file(UPDATED_FILE)
             .fileContentType(UPDATED_FILE_CONTENT_TYPE)
             .entityId(UPDATED_ENTITY_ID)
-            .entityName(UPDATED_ENTITY_NAME);
+            .entityName(UPDATED_ENTITY_NAME)
+            .createdBy(UPDATED_CREATED_BY);
     }
 
     @BeforeEach
@@ -121,7 +127,9 @@ class AttachmentResourceIT {
         AttachmentDTO attachmentDTO = attachmentMapper.toDto(attachment);
         var returnedAttachmentDTO = om.readValue(
             restAttachmentMockMvc
-                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(attachmentDTO)))
+                .perform(
+                    post(ENTITY_API_URL).with(csrf()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(attachmentDTO))
+                )
                 .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
@@ -148,7 +156,7 @@ class AttachmentResourceIT {
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restAttachmentMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(attachmentDTO)))
+            .perform(post(ENTITY_API_URL).with(csrf()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(attachmentDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Attachment in the database
@@ -166,7 +174,24 @@ class AttachmentResourceIT {
         AttachmentDTO attachmentDTO = attachmentMapper.toDto(attachment);
 
         restAttachmentMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(attachmentDTO)))
+            .perform(post(ENTITY_API_URL).with(csrf()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(attachmentDTO)))
+            .andExpect(status().isBadRequest());
+
+        assertSameRepositoryCount(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkCreatedByIsRequired() throws Exception {
+        long databaseSizeBeforeTest = getRepositoryCount();
+        // set the field null
+        attachment.setCreatedBy(null);
+
+        // Create the Attachment, which fails.
+        AttachmentDTO attachmentDTO = attachmentMapper.toDto(attachment);
+
+        restAttachmentMockMvc
+            .perform(post(ENTITY_API_URL).with(csrf()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(attachmentDTO)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -187,7 +212,8 @@ class AttachmentResourceIT {
             .andExpect(jsonPath("$.[*].fileContentType").value(hasItem(DEFAULT_FILE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].file").value(hasItem(Base64.getEncoder().encodeToString(DEFAULT_FILE))))
             .andExpect(jsonPath("$.[*].entityId").value(hasItem(DEFAULT_ENTITY_ID.intValue())))
-            .andExpect(jsonPath("$.[*].entityName").value(hasItem(DEFAULT_ENTITY_NAME.toString())));
+            .andExpect(jsonPath("$.[*].entityName").value(hasItem(DEFAULT_ENTITY_NAME.toString())))
+            .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.intValue())));
     }
 
     @Test
@@ -205,7 +231,8 @@ class AttachmentResourceIT {
             .andExpect(jsonPath("$.fileContentType").value(DEFAULT_FILE_CONTENT_TYPE))
             .andExpect(jsonPath("$.file").value(Base64.getEncoder().encodeToString(DEFAULT_FILE)))
             .andExpect(jsonPath("$.entityId").value(DEFAULT_ENTITY_ID.intValue()))
-            .andExpect(jsonPath("$.entityName").value(DEFAULT_ENTITY_NAME.toString()));
+            .andExpect(jsonPath("$.entityName").value(DEFAULT_ENTITY_NAME.toString()))
+            .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.intValue()));
     }
 
     @Test
@@ -231,12 +258,14 @@ class AttachmentResourceIT {
             .file(UPDATED_FILE)
             .fileContentType(UPDATED_FILE_CONTENT_TYPE)
             .entityId(UPDATED_ENTITY_ID)
-            .entityName(UPDATED_ENTITY_NAME);
+            .entityName(UPDATED_ENTITY_NAME)
+            .createdBy(UPDATED_CREATED_BY);
         AttachmentDTO attachmentDTO = attachmentMapper.toDto(updatedAttachment);
 
         restAttachmentMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, attachmentDTO.getId())
+                    .with(csrf())
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(om.writeValueAsBytes(attachmentDTO))
             )
@@ -260,6 +289,7 @@ class AttachmentResourceIT {
         restAttachmentMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, attachmentDTO.getId())
+                    .with(csrf())
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(om.writeValueAsBytes(attachmentDTO))
             )
@@ -282,6 +312,7 @@ class AttachmentResourceIT {
         restAttachmentMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, longCount.incrementAndGet())
+                    .with(csrf())
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(om.writeValueAsBytes(attachmentDTO))
             )
@@ -302,7 +333,7 @@ class AttachmentResourceIT {
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restAttachmentMockMvc
-            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(attachmentDTO)))
+            .perform(put(ENTITY_API_URL).with(csrf()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(attachmentDTO)))
             .andExpect(status().isMethodNotAllowed());
 
         // Validate the Attachment in the database
@@ -326,6 +357,7 @@ class AttachmentResourceIT {
         restAttachmentMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedAttachment.getId())
+                    .with(csrf())
                     .contentType("application/merge-patch+json")
                     .content(om.writeValueAsBytes(partialUpdatedAttachment))
             )
@@ -356,11 +388,13 @@ class AttachmentResourceIT {
             .file(UPDATED_FILE)
             .fileContentType(UPDATED_FILE_CONTENT_TYPE)
             .entityId(UPDATED_ENTITY_ID)
-            .entityName(UPDATED_ENTITY_NAME);
+            .entityName(UPDATED_ENTITY_NAME)
+            .createdBy(UPDATED_CREATED_BY);
 
         restAttachmentMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedAttachment.getId())
+                    .with(csrf())
                     .contentType("application/merge-patch+json")
                     .content(om.writeValueAsBytes(partialUpdatedAttachment))
             )
@@ -385,6 +419,7 @@ class AttachmentResourceIT {
         restAttachmentMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, attachmentDTO.getId())
+                    .with(csrf())
                     .contentType("application/merge-patch+json")
                     .content(om.writeValueAsBytes(attachmentDTO))
             )
@@ -407,6 +442,7 @@ class AttachmentResourceIT {
         restAttachmentMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, longCount.incrementAndGet())
+                    .with(csrf())
                     .contentType("application/merge-patch+json")
                     .content(om.writeValueAsBytes(attachmentDTO))
             )
@@ -427,7 +463,9 @@ class AttachmentResourceIT {
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restAttachmentMockMvc
-            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(attachmentDTO)))
+            .perform(
+                patch(ENTITY_API_URL).with(csrf()).contentType("application/merge-patch+json").content(om.writeValueAsBytes(attachmentDTO))
+            )
             .andExpect(status().isMethodNotAllowed());
 
         // Validate the Attachment in the database
@@ -444,7 +482,7 @@ class AttachmentResourceIT {
 
         // Delete the attachment
         restAttachmentMockMvc
-            .perform(delete(ENTITY_API_URL_ID, attachment.getId()).accept(MediaType.APPLICATION_JSON))
+            .perform(delete(ENTITY_API_URL_ID, attachment.getId()).with(csrf()).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item

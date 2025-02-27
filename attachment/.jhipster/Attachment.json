@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20250226043714"
+    "changelogDate": "20250226225723"
   },
   "applications": ["attachment"],
   "clientRootFolder": "attachment",
@@ -21,6 +21,11 @@
       "fieldName": "entityName",
       "fieldType": "EntityNameEnum",
       "fieldValues": "PROPERTY (Property),CUSTOMER (Customer),RENTAL_CONTRACT (Rental)"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
     }
   ],
   "microserviceName": "attachment",

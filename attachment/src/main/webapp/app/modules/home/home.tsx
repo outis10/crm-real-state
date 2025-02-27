@@ -1,14 +1,25 @@
 import './home.scss';
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Translate } from 'react-jhipster';
 import { Alert, Col, Row } from 'reactstrap';
 
+import { REDIRECT_URL, getLoginUrl } from 'app/shared/util/url-utils';
 import { useAppSelector } from 'app/config/store';
 
 export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
+  const pageLocation = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const redirectURL = localStorage.getItem(REDIRECT_URL);
+    if (redirectURL) {
+      localStorage.removeItem(REDIRECT_URL);
+      location.href = `${location.origin}${redirectURL}`;
+    }
+  });
 
   return (
     <Row>
@@ -35,9 +46,16 @@ export const Home = () => {
             <Alert color="warning">
               <Translate contentKey="global.messages.info.authenticated.prefix">If you want to </Translate>
 
-              <Link to="/login" className="alert-link">
-                <Translate contentKey="global.messages.info.authenticated.link"> sign in</Translate>
-              </Link>
+              <a
+                className="alert-link"
+                onClick={() =>
+                  navigate(getLoginUrl(), {
+                    state: { from: pageLocation },
+                  })
+                }
+              >
+                <Translate contentKey="global.messages.info.authenticated.link">sign in</Translate>
+              </a>
               <Translate contentKey="global.messages.info.authenticated.suffix">
                 , you can try the default accounts:
                 <br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;)

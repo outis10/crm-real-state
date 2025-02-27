@@ -62,6 +62,12 @@ export const AttachmentDetail = () => {
             </span>
           </dt>
           <dd>{attachmentEntity.entityName}</dd>
+          <dt>
+            <span id="createdBy">
+              <Translate contentKey="attachmentApp.attachmentAttachment.createdBy">Created By</Translate>
+            </span>
+          </dt>
+          <dd>{attachmentEntity.createdBy}</dd>
         </dl>
         <Button tag={Link} to="/attachment/attachment" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

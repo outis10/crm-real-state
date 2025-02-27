@@ -6,6 +6,7 @@ export interface IAttachment {
   file?: string;
   entityId?: number;
   entityName?: keyof typeof EntityNameEnum | null;
+  createdBy?: number;
 }
 
 export const defaultValue: Readonly<IAttachment> = {};

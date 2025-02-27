@@ -130,6 +130,10 @@ export const Attachment = () => {
                   <Translate contentKey="attachmentApp.attachmentAttachment.entityName">Entity Name</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('entityName')} />
                 </th>
+                <th className="hand" onClick={sort('createdBy')}>
+                  <Translate contentKey="attachmentApp.attachmentAttachment.createdBy">Created By</Translate>{' '}
+                  <FontAwesomeIcon icon={getSortIconByFieldName('createdBy')} />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -160,6 +164,7 @@ export const Attachment = () => {
                   <td>
                     <Translate contentKey={`attachmentApp.EntityNameEnum.${attachment.entityName}`} />
                   </td>
+                  <td>{attachment.createdBy}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button

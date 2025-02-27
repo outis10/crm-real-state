@@ -24,6 +24,9 @@ public class AttachmentDTO implements Serializable {
 
     private EntityNameEnum entityName;
 
+    @NotNull
+    private Long createdBy;
+
     public Long getId() {
         return id;
     }
@@ -64,6 +67,14 @@ public class AttachmentDTO implements Serializable {
         this.entityName = entityName;
     }
 
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -93,6 +104,7 @@ public class AttachmentDTO implements Serializable {
             ", file='" + getFile() + "'" +
             ", entityId=" + getEntityId() +
             ", entityName='" + getEntityName() + "'" +
+            ", createdBy=" + getCreatedBy() +
             "}";
     }
 }

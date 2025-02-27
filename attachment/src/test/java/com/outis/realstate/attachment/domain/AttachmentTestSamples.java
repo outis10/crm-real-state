@@ -9,14 +9,17 @@ public class AttachmentTestSamples {
     private static final AtomicLong longCount = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
     public static Attachment getAttachmentSample1() {
-        return new Attachment().id(1L).entityId(1L);
+        return new Attachment().id(1L).entityId(1L).createdBy(1L);
     }
 
     public static Attachment getAttachmentSample2() {
-        return new Attachment().id(2L).entityId(2L);
+        return new Attachment().id(2L).entityId(2L).createdBy(2L);
     }
 
     public static Attachment getAttachmentRandomSampleGenerator() {
-        return new Attachment().id(longCount.incrementAndGet()).entityId(longCount.incrementAndGet());
+        return new Attachment()
+            .id(longCount.incrementAndGet())
+            .entityId(longCount.incrementAndGet())
+            .createdBy(longCount.incrementAndGet());
     }
 }

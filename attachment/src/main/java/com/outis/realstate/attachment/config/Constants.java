@@ -6,7 +6,7 @@ package com.outis.realstate.attachment.config;
 public final class Constants {
 
     public static final String SYSTEM = "system";
-    public static final String DEFAULT_LANGUAGE = "en";
+    public static final String DEFAULT_LANGUAGE = "es";
 
     private Constants() {}
 }

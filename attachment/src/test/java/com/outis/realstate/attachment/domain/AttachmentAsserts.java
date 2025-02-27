@@ -50,7 +50,8 @@ public class AttachmentAsserts {
             .satisfies(a -> assertThat(a.getFile()).as("check file").isEqualTo(expected.getFile()))
             .satisfies(a -> assertThat(a.getFileContentType()).as("check file contenty type").isEqualTo(expected.getFileContentType()))
             .satisfies(a -> assertThat(a.getEntityId()).as("check entityId").isEqualTo(expected.getEntityId()))
-            .satisfies(a -> assertThat(a.getEntityName()).as("check entityName").isEqualTo(expected.getEntityName()));
+            .satisfies(a -> assertThat(a.getEntityName()).as("check entityName").isEqualTo(expected.getEntityName()))
+            .satisfies(a -> assertThat(a.getCreatedBy()).as("check createdBy").isEqualTo(expected.getCreatedBy()));
     }
 
     /**

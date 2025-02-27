@@ -38,10 +38,13 @@ spring:
     basename: i18n/messages
   security:
     oauth2:
+      client:
+        provider:
+          oidc:
+            issuer-uri: http://DO_NOT_CALL:9080/realms/jhipster
       resourceserver:
         jwt:
-          authority-prefix: ''
-          authorities-claim-name: auth
+          principal-claim-name: preferred_username
   task:
     execution:
       thread-name-prefix: attachment-task-
@@ -79,14 +82,6 @@ jhipster:
       host: localhost
       port: 5000
       ring-buffer-size: 512
-  security:
-    authentication:
-      jwt:
-        # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: MDdhY2E1MGE5ZjUwM2UxNjMwNzUzMWNiNzRjYTQ0ZjZiMjY1ZjZmZGM4NzVhNzZjNTY1NWE1N2I5ZDE2ZTUzNzI1MzM2ODdmYTFiZTZhNjJhZjFmMDg3NGZhNGI3YzJlZmM4Yzg2ZDYxMjBhODEyMjBmYWM1ZGNiYzdhOTNhNGQ=
-        # Token is valid 24 hours
-        token-validity-in-seconds: 86400
-        token-validity-in-seconds-for-remember-me: 86400
 
 # ===================================================================
 # Application specific properties

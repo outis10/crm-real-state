@@ -48,6 +48,9 @@ export const AttachmentUpdate = () => {
     if (values.entityId !== undefined && typeof values.entityId !== 'number') {
       values.entityId = Number(values.entityId);
     }
+    if (values.createdBy !== undefined && typeof values.createdBy !== 'number') {
+      values.createdBy = Number(values.createdBy);
+    }
 
     const entity = {
       ...attachmentEntity,
@@ -128,6 +131,17 @@ export const AttachmentUpdate = () => {
                   </option>
                 ))}
               </ValidatedField>
+              <ValidatedField
+                label={translate('attachmentApp.attachmentAttachment.createdBy')}
+                id="attachment-createdBy"
+                name="createdBy"
+                data-cy="createdBy"
+                type="text"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                  validate: v => isNumber(v) || translate('entity.validation.number'),
+                }}
+              />
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/attachment/attachment" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

@@ -20,7 +20,8 @@
       "id": "ID",
       "file": "File",
       "entityId": "Entity Id",
-      "entityName": "Entity Name"
+      "entityName": "Entity Name",
+      "createdBy": "Created By"
     }
   }
 }

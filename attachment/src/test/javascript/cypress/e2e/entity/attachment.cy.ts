@@ -15,7 +15,12 @@ describe('Attachment e2e test', () => {
   const attachmentPageUrlPattern = new RegExp('/attachment/attachment(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const attachmentSample = { file: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=', fileContentType: 'unknown', entityId: 28341 };
+  const attachmentSample = {
+    file: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=',
+    fileContentType: 'unknown',
+    entityId: 16423,
+    createdBy: 25455,
+  };
 
   let attachment;
 
@@ -164,10 +169,13 @@ describe('Attachment e2e test', () => {
     it('should create an instance of Attachment', () => {
       cy.setFieldImageAsBytesOfEntity('file', 'integration-test.png', 'image/png');
 
-      cy.get(`[data-cy="entityId"]`).type('17195');
-      cy.get(`[data-cy="entityId"]`).should('have.value', '17195');
+      cy.get(`[data-cy="entityId"]`).type('15330');
+      cy.get(`[data-cy="entityId"]`).should('have.value', '15330');
 
-      cy.get(`[data-cy="entityName"]`).select('CUSTOMER');
+      cy.get(`[data-cy="entityName"]`).select('RENTAL_CONTRACT');
+
+      cy.get(`[data-cy="createdBy"]`).type('18788');
+      cy.get(`[data-cy="createdBy"]`).should('have.value', '18788');
 
       // since cypress clicks submit too fast before the blob fields are validated
       cy.wait(200); // eslint-disable-line cypress/no-unnecessary-waiting

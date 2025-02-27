@@ -3,6 +3,7 @@ package com.outis.realstate.attachment;
 import com.outis.realstate.attachment.config.AsyncSyncConfiguration;
 import com.outis.realstate.attachment.config.EmbeddedSQL;
 import com.outis.realstate.attachment.config.JacksonConfiguration;
+import com.outis.realstate.attachment.config.TestSecurityConfiguration;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -14,7 +15,9 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest(classes = { AttachmentApp.class, JacksonConfiguration.class, AsyncSyncConfiguration.class })
+@SpringBootTest(
+    classes = { AttachmentApp.class, JacksonConfiguration.class, AsyncSyncConfiguration.class, TestSecurityConfiguration.class }
+)
 @EmbeddedSQL
 public @interface IntegrationTest {
 }
