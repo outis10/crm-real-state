@@ -1,0 +1,26 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 1,
+    "applicationType": "microservice",
+    "authenticationType": "oauth2",
+    "baseName": "crm",
+    "buildTool": "maven",
+    "clientFramework": "react",
+    "devDatabaseType": "postgresql",
+    "devServerPort": 9061,
+    "entities": ["Customer", "Contact", "Opportunity", "Quotation", "Property", "Rental", "Sale", "Charge", "Payment"],
+    "jhipsterVersion": "8.9.0",
+    "jwtSecretKey": "Y2QwZTI1ZGMwNGI5YzhmZTJjZTk5MmUxZDM3YzNiYTY3NDM4Y2Y1ZTI2MmRmM2NhYjdiNDBjZGFmYjk3NzkzZTA3YjMyNDFjOTVmZjc0MGJjOTJlODQwY2Y0ZmE4YzczMGYxZDg5NjcwNTdmYjJhYjRiNzI1NDA3NTRiMWQzN2Q=",
+    "languages": ["es", "en"],
+    "lastLiquibaseTimestamp": 1740611123000,
+    "monorepository": true,
+    "nativeLanguage": "es",
+    "packageName": "com.outis.realstate.crm",
+    "prodDatabaseType": "postgresql",
+    "serverPort": "8081",
+    "serviceDiscoveryType": "consul",
+    "skipCommitHook": true,
+    "skipUserManagement": true,
+    "testFrameworks": ["cypress"]
+  }
+}

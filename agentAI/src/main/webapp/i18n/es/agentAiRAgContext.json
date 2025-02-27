@@ -1,0 +1,26 @@
+{
+  "agentAiApp": {
+    "agentAiRAgContext": {
+      "home": {
+        "title": "RAG Contexts",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo RAG Context",
+        "createOrEditLabel": "Crear o editar RAG Context",
+        "notFound": "Ningún RAG Contexts encontrado"
+      },
+      "created": "Un nuevo RAG Context ha sido creado con el identificador {{ param }}",
+      "updated": "Un RAG Context ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un RAG Context ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar RAG Context {{ id }}?"
+      },
+      "detail": {
+        "title": "RAG Context"
+      },
+      "id": "ID",
+      "entityId": "Entity Id",
+      "entityName": "Entity Name",
+      "contextText": "Context Text"
+    }
+  }
+}

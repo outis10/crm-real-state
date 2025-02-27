@@ -1,0 +1,11 @@
+{
+  "notificationApp": {
+    "NotificationStatusEnum": {
+      "null": "",
+      "NEW": "NEW",
+      "SENT": "SENT",
+      "VIEWED": "VIEWED",
+      "FAILED": "FAILED"
+    }
+  }
+}

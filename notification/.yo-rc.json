@@ -1,0 +1,27 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 2,
+    "applicationType": "microservice",
+    "authenticationType": "oauth2",
+    "baseName": "notification",
+    "buildTool": "maven",
+    "clientFramework": "react",
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "devServerPort": 9062,
+    "entities": ["Notification"],
+    "jhipsterVersion": "8.9.0",
+    "jwtSecretKey": "NjUzNWEzOWJmYzFjYmRkYmQwOGVkMzg0ZGVjN2Q1ODI1MzIxZmRiM2I0MWVkYTZiZjgwODA4ZjBjOWViNzUzZmJiMjA1OTQ5ZmEwMmIyMmQxYWJiOTJjMjYyNWQ4YTYxNDVhNTM3ZDNlZDQ1ZjEwODZkYjBhOTc0YmJjMmYzM2U=",
+    "languages": ["es", "en"],
+    "lastLiquibaseTimestamp": 1740610643000,
+    "monorepository": true,
+    "nativeLanguage": "es",
+    "packageName": "com.outis.realstate.notification",
+    "prodDatabaseType": "mongodb",
+    "serverPort": "8082",
+    "serviceDiscoveryType": "consul",
+    "skipCommitHook": true,
+    "skipUserManagement": true,
+    "testFrameworks": ["cypress"]
+  }
+}

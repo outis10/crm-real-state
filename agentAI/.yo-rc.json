@@ -1,0 +1,27 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 4,
+    "applicationType": "microservice",
+    "authenticationType": "oauth2",
+    "baseName": "agentAI",
+    "buildTool": "maven",
+    "clientFramework": "react",
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "devServerPort": 9064,
+    "entities": ["ChatInteraction", "RAGContext"],
+    "jhipsterVersion": "8.9.0",
+    "jwtSecretKey": "M2Y1NWQ5OGYwMjJhN2FjNmU4MTcwY2Y0ZjQ1MzJmZjUwMDdiNzY1ZWFmNGQ1NDU0OGYxNmVhZWQxZWE1ODcwMmNlMWViN2FlNTNmYWRiNDJlNzM0Y2Y4MTE4MDFmN2E3NzI1MGJiY2RiMDMxMTA1YjY2OWI1Yjc5NTcxOWExMGY=",
+    "languages": ["es", "en"],
+    "lastLiquibaseTimestamp": 1740610703000,
+    "monorepository": true,
+    "nativeLanguage": "es",
+    "packageName": "com.outis.realstate.ai",
+    "prodDatabaseType": "mongodb",
+    "serverPort": "8084",
+    "serviceDiscoveryType": "consul",
+    "skipCommitHook": true,
+    "skipUserManagement": true,
+    "testFrameworks": ["cypress"]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 0,
+    "applicationType": "gateway",
+    "applications": {
+      "agentAI": {
+        "applicationIndex": 4,
+        "clientFramework": "react",
+        "serverPort": "8084"
+      },
+      "attachment": {
+        "applicationIndex": 3,
+        "clientFramework": "react",
+        "serverPort": "8083"
+      },
+      "crm": {
+        "applicationIndex": 1,
+        "clientFramework": "react",
+        "serverPort": "8081"
+      },
+      "notification": {
+        "applicationIndex": 2,
+        "clientFramework": "react",
+        "serverPort": "8082"
+      }
+    },
+    "authenticationType": "oauth2",
+    "baseName": "gateway",
+    "buildTool": "maven",
+    "clientFramework": "react",
+    "devDatabaseType": "postgresql",
+    "devServerPort": 9060,
+    "entities": [],
+    "jhipsterVersion": "8.9.0",
+    "languages": ["es", "en"],
+    "microfrontends": [
+      {
+        "baseName": "crm"
+      },
+      {
+        "baseName": "notification"
+      },
+      {
+        "baseName": "attachment"
+      },
+      {
+        "baseName": "agentAI"
+      }
+    ],
+    "monorepository": true,
+    "nativeLanguage": "es",
+    "packageName": "com.outis.realstate.gateway",
+    "prodDatabaseType": "postgresql",
+    "reactive": true,
+    "serverPort": 8080,
+    "serviceDiscoveryType": "consul",
+    "skipCommitHook": true,
+    "skipUserManagement": true,
+    "testFrameworks": ["cypress"]
+  }
+}

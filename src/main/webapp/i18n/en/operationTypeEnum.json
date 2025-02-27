@@ -1,9 +1,0 @@
-{
-  "crmRealStateApp": {
-    "OperationTypeEnum": {
-      "null": "",
-      "SALES": "Sales",
-      "LEASE": "Lease"
-    }
-  }
-}

@@ -1,0 +1,32 @@
+{
+  "crmApp": {
+    "crmRental": {
+      "home": {
+        "title": "Rentals",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Rental",
+        "createOrEditLabel": "Crear o editar Rental",
+        "notFound": "Ningún Rentals encontrado"
+      },
+      "created": "Un nuevo Rental ha sido creado con el identificador {{ param }}",
+      "updated": "Un Rental ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Rental ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Rental {{ id }}?"
+      },
+      "detail": {
+        "title": "Rental"
+      },
+      "id": "ID",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "monthlyRent": "Monthly Rent",
+      "securityDeposit": "Security Deposit",
+      "contractStatus": "Contract Status",
+      "createdBy": "Created By",
+      "property": "Property",
+      "customer": "Customer",
+      "opportunity": "Opportunity"
+    }
+  }
+}

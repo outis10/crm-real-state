@@ -1,0 +1,68 @@
+{
+  "annotations": {
+    "changelogDate": "20250226230223"
+  },
+  "applications": ["crm"],
+  "clientRootFolder": "crm",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "startDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "monthlyRent",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "securityDeposit",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "contractStatus",
+      "fieldType": "ContractStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE (Active),FINISHED (Finished),CANCELED (Canceled)"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "Long"
+    }
+  ],
+  "microserviceName": "crm",
+  "name": "Rental",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "codeName",
+      "otherEntityName": "property",
+      "relationshipName": "property",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "rental",
+      "relationshipName": "customer",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "opportunity",
+      "otherEntityRelationshipName": "rental",
+      "relationshipName": "opportunity",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

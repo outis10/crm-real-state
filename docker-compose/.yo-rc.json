@@ -1,0 +1,17 @@
+{
+  "generator-jhipster": {
+    "deploymentType": "docker-compose",
+    "appsFolders": [
+      "crm",
+      "notification",
+      "attachment",
+      "agentAI"
+    ],
+    "directoryPath": "../",
+    "gatewayType": "SpringCloudGateway",
+    "monitoring": "no",
+    "clusteredDbApps": [],
+    "serviceDiscoveryType": "consul",
+    "dockerRepositoryName": "outis10"
+  }
+}

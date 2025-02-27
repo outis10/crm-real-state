@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "changelogDate": "20250226230023"
+  },
+  "applications": ["crm"],
+  "clientRootFolder": "crm",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "finalPrice",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "validityDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "comments",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "Long"
+    }
+  ],
+  "microserviceName": "crm",
+  "name": "Quotation",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,2 @@
+org.springframework.test.context.ContextCustomizerFactory = \
+    com.outis.realstate.ai.config.TestContainersSpringContextCustomizerFactory

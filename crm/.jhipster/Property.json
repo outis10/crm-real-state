@@ -1,0 +1,102 @@
+{
+  "annotations": {
+    "changelogDate": "20250226230123"
+  },
+  "applications": ["crm"],
+  "clientRootFolder": "crm",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codeName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "operationType",
+      "fieldType": "OperationTypeEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "SALES (Sales),LEASE (Lease)"
+    },
+    {
+      "fieldName": "location",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "postalCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "rentalPrice",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "area",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "bedrooms",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "bathrooms",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "appreciationRate",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "features",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "PropertyStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "AVAILABLE (Available),SOLD (Sold),LEASED (Leased)"
+    },
+    {
+      "fieldName": "images",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "crm",
+  "name": "Property",
+  "pagination": "infinite-scroll",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

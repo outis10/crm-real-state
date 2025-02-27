@@ -1,0 +1,42 @@
+{
+  "annotations": {
+    "changelogDate": "20250226225723"
+  },
+  "applications": ["agentAI"],
+  "clientRootFolder": "agentAI",
+  "databaseType": "mongodb",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "entityId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "entityName",
+      "fieldType": "EntityNameEnum",
+      "fieldValues": "PROPERTY (Property),CUSTOMER (Customer),RENTAL_CONTRACT (Rental)"
+    },
+    {
+      "fieldName": "customerQuestion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "chatbotAnswer",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "timestamp",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "agentAI",
+  "name": "ChatInteraction",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
