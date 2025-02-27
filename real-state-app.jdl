@@ -1,0 +1,361 @@
+
+/*
+ * This is a microservice crm for real state with realState Gateway and three microservice applications
+ * This uses Istio for native kubernetes service discovery and JWT authentication
+ */
+
+application {
+  config {
+    baseName gateway
+    applicationType gateway
+    packageName com.outis.realstate.gateway
+    serviceDiscoveryType consul
+    authenticationType oauth2
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    buildTool maven
+    clientFramework react
+    testFrameworks [cypress]
+    microfrontends [crm, notification, attachment, agentAI]
+    nativeLanguage es
+    languages [es, en]
+  }
+}
+
+
+application {
+  config {
+    baseName crm
+    applicationType microservice
+    packageName com.outis.realstate.crm
+    serviceDiscoveryType consul
+    authenticationType oauth2
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    buildTool maven
+    serverPort 8081
+    skipUserManagement true
+    clientFramework react
+    testFrameworks [cypress]
+    nativeLanguage es
+    languages [es, en]
+  }
+  entities Customer, Contact, Opportunity, Quotation, Property, Rental, Sale, Charge, Payment
+}
+
+application {
+  config {
+    baseName notification
+    applicationType microservice
+    packageName com.outis.realstate.notification
+    serviceDiscoveryType consul
+    authenticationType oauth2
+    databaseType mongodb
+    prodDatabaseType mongodb
+    devDatabaseType mongodb
+    buildTool maven
+    serverPort 8082
+    clientFramework react
+    skipUserManagement true
+    testFrameworks [cypress]
+    nativeLanguage es
+    languages [es, en]
+  }
+  entities Notification
+}
+
+application {
+  config {
+    baseName attachment
+    applicationType microservice
+    packageName com.outis.realstate.attachment
+    serviceDiscoveryType consul
+    authenticationType oauth2
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    buildTool maven
+    serverPort 8083
+    clientFramework react
+    skipUserManagement true
+    testFrameworks [cypress]
+    nativeLanguage es
+    languages [es, en]
+  }
+  entities Attachment
+}
+application {
+  config {
+    baseName agentAI
+    applicationType microservice
+    packageName com.outis.realstate.ai
+    serviceDiscoveryType consul
+    authenticationType oauth2
+    databaseType mongodb
+    prodDatabaseType mongodb
+    devDatabaseType mongodb
+    buildTool maven
+    serverPort 8084
+    clientFramework react
+    skipUserManagement true
+    testFrameworks [cypress]
+    nativeLanguage es
+    languages [es, en]
+
+  }
+  entities ChatInteraction, RAGContext
+}
+
+entity Attachment {
+	file Blob required
+  entityId Long required
+  entityName EntityNameEnum
+  createdBy Long required
+
+}
+enum EntityNameEnum {
+    PROPERTY(Property)
+    CUSTOMER(Customer)
+    RENTAL_CONTRACT(Rental)
+}
+entity Contact {
+  firstName String required minlength(2) maxlength(100),
+  middleName String minlength(2) maxlength(100),
+  lastName String  minlength(2) maxlength(100),
+  email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+  phone String pattern(/^\+?[1-9]\d{1,14}$/),
+  address String,
+  city String,
+  state String
+  postalCode String pattern(/^\d{5}(-\d{4})?$/)
+  country String,
+  socialMediaProfiles String,
+  notes TextBlob
+  createdBy Long required
+}
+
+entity Opportunity {
+  name String required minlength(2) maxlength(100),
+  budget BigDecimal min(0)
+  amount BigDecimal required min(0),
+  probability Integer required min(0) max(100),
+  expectedCloseDate LocalDate required,
+  stage OpportunityStageEnum required,
+  description TextBlob,
+  createdAt Instant required,
+  modifiedAt Instant,
+  closedAt Instant
+  createdBy Long
+}
+enum OpportunityStageEnum {
+  PROSPECTING (Prospecting),
+  QUALIFICATION (Qualification),
+  PROPOSAL (Proposal),
+  NEGOTIATION (Negotiation),
+  CLOSED_WON (Won),
+  CLOSED_LOST (Lost)
+}
+
+entity NearbyLocation {
+  name String required,
+  type String required, // Escuela, Hospital, Parque, etc.
+  distance Double required, // Distancia en km o metros
+  coordinates String // Coordenadas GPS opcionales
+}
+
+
+entity Property {
+  name String required,
+  codeName String
+  type String required, // Casa, Departamento, Terreno, etc.
+  operationType OperationTypeEnum required // Venta, Renta
+  location String required, // Dirección completa
+  city String required,
+  state String required,
+  postalCode String required,
+  price BigDecimal required,
+  rentalPrice BigDecimal, // Precio de renta (opcional si es solo venta)
+  area Integer required, // Tamaño en metros cuadrados
+  bedrooms Integer,
+  bathrooms Integer,
+  appreciationRate Double, // Plusvalía en porcentaje
+  features String, // Características adicionales
+  status PropertyStatusEnum required, // Disponible, Vendida, Rentada, etc.
+  images String // URLs separadas por comas
+  createdBy Long required
+}
+
+
+enum OperationTypeEnum {
+  SALES (Sales)
+  LEASE (Lease)
+}
+
+enum PropertyStatusEnum {
+  AVAILABLE (Available)
+  SOLD (Sold)
+  LEASED (Leased)
+}
+
+
+entity Rental {
+  startDate Instant required,
+  endDate Instant required,
+  monthlyRent BigDecimal required,
+  securityDeposit BigDecimal,
+  contractStatus ContractStatusEnum required // Activo, Finalizado, Cancelado
+  createdBy Long
+}
+
+entity Sale {
+    propertyId Long required
+    customerId Long required
+    oportunityId Long
+    saleDate Instant required
+    totalAmount BigDecimal required
+    status SaleStatusEnum
+}
+
+enum SaleStatusEnum {
+    PENDING, COMPLETED, CANCELLED
+}
+enum ContractStatusEnum {
+	ACTIVE (Active)
+	FINISHED (Finished)
+  CANCELED (Canceled)
+}
+
+entity Charge {
+  type ChargeTypeEnum required, // Renta, Mantenimiento, Otros
+  amount BigDecimal required,
+  dueDate Instant required,
+  status ChargeStatusEnum required// Pendiente, Pagado, Retrasado
+  createdBy Long
+}
+enum ChargeTypeEnum {
+	LEASE (Lease)
+    MAINTAIN (Maintain)
+    INSTALLMENT_PAYMENT (Installment_Payment)
+    OTHER (Other)
+}
+enum ChargeStatusEnum {
+	PENDING (Pending)
+    PAID (Paid)
+    OVERDUE (Overdue)
+    IN_REVIEW (In_review)
+
+}
+
+entity Payment {
+  amount BigDecimal required,
+  paymentDate Instant required,
+  paymentMethod PaymentMethodEnum required, // Transferencia, Tarjeta, Efectivo
+  reference String // Referencia del pago
+  createdBy Long
+}
+
+enum PaymentMethodEnum {
+	TRANSFER (Transfer)
+    CARD (Card)
+    CASH (Cash)
+}
+
+entity Customer {
+  firstName String required minlength(2) maxlength(100),
+  middleName String minlength(2) maxlength(100),
+  lastName String  minlength(2) maxlength(100),
+  email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/),
+  phone String pattern(/^\+?[1-9]\d{1,14}$/),
+  address String
+  city String
+  state String
+  postalCode String pattern(/^\d{5}(-\d{4})?$/),
+  country String,
+  socialMediaProfiles String,
+  notes TextBlob
+  preferences String, // Preferencias como texto libre
+  budget BigDecimal, // Presupuesto máximo
+  rentalBudget BigDecimal, // Presupuesto máximo para renta
+  interactionHistory TextBlob // Registro de interacciones con el chatbot
+  createdBy Long
+}
+
+entity ChatInteraction {
+  entityId Long required
+  entityName EntityNameEnum
+  customerQuestion String required,
+  chatbotAnswer String required,
+  timestamp Instant required
+}
+entity RAGContext {
+    entityId Long required
+    entityName EntityNameEnum
+    contextText String required
+}
+
+
+entity Notification {
+  entityId Long required
+  entityName EntityNameEnum
+  target NotificationTargetEnum required, // Nueva propiedad, descuento, etc.
+  content String required, // Descripción
+  status NotificationStatusEnum required, // Enviada, Vista
+  timestamp Instant required
+}
+enum NotificationTargetEnum {
+	NEW
+    DISCOUNT
+    AD
+    OVERDUE
+    THANKS
+}
+
+enum NotificationStatusEnum {
+	NEW
+	SENT
+    VIEWED,
+    FAILED
+}
+
+entity Quotation {
+  finalPrice BigDecimal required,
+  validityDate Instant required, // Fecha límite de la cotización
+  comments String
+  createdBy Long
+}
+
+relationship ManyToOne {
+  Opportunity {customer (email) required} to Customer
+
+  Contact{assignedTo (email)} to Customer
+  Charge {rental required} to Rental
+  Payment {rental required} to Rental
+  NearbyLocation {property(codeName) required} to Property
+  Rental {property(codeName)} to Property
+  Rental to Customer
+  Rental to Opportunity
+}
+// DTOs y Opciones
+dto * with mapstruct
+service * with serviceImpl
+
+paginate all with pagination except Property
+paginate Property with infinite-scroll
+
+
+deployment {
+  deploymentType docker-compose
+  serviceDiscoveryType consul
+  appsFolders [crm, notification, attachment, agentAI]
+  dockerRepositoryName "outis10"
+}
+
+deployment {
+  deploymentType kubernetes
+  appsFolders [crm, notification, attachment, agentAI]
+  clusteredDbApps [realstate]
+  kubernetesNamespace rsapp
+  kubernetesUseDynamicStorage true
+  kubernetesStorageClassName ""
+  serviceDiscoveryType consul
+  dockerRepositoryName "outis10"
+}
