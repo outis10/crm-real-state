@@ -1,0 +1,51 @@
+{
+  "annotations": {
+    "changelogDate": "20250226230423"
+  },
+  "applications": ["crm"],
+  "clientRootFolder": "crm",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "ChargeTypeEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "LEASE (Lease),MAINTAIN (Maintain),INSTALLMENT_PAYMENT (Installment_Payment),OTHER (Other)"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dueDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ChargeStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PENDING (Pending),PAID (Paid),OVERDUE (Overdue),IN_REVIEW (In_review)"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "Long"
+    }
+  ],
+  "microserviceName": "crm",
+  "name": "Charge",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "rental",
+      "relationshipName": "rental",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

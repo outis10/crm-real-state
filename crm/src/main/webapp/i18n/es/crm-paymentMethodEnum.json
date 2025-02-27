@@ -1,0 +1,10 @@
+{
+  "crmApp": {
+    "PaymentMethodEnum": {
+      "null": "",
+      "TRANSFER": "Transfer",
+      "CARD": "Card",
+      "CASH": "Cash"
+    }
+  }
+}
