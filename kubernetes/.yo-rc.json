@@ -1,0 +1,25 @@
+{
+  "generator-jhipster": {
+    "deploymentType": "kubernetes",
+    "appsFolders": [
+      "crm",
+      "notification",
+      "attachment",
+      "agentAI"
+    ],
+    "directoryPath": "../",
+    "kubernetesServiceType": "LoadBalancer",
+    "istio": false,
+    "ingressDomain": "",
+    "monitoring": "no",
+    "clusteredDbApps": [
+      "realstate"
+    ],
+    "serviceDiscoveryType": "consul",
+    "dockerRepositoryName": "outis10",
+    "dockerPushCommand": "docker push",
+    "kubernetesNamespace": "rsapp",
+    "kubernetesUseDynamicStorage": true,
+    "kubernetesStorageClassName": ""
+  }
+}
