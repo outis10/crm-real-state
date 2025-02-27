@@ -1,0 +1,10 @@
+{
+  "agentAiApp": {
+    "EntityNameEnum": {
+      "null": "",
+      "PROPERTY": "Property",
+      "CUSTOMER": "Customer",
+      "RENTAL_CONTRACT": "Rental"
+    }
+  }
+}

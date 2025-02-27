@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20250226225823"
+  },
+  "applications": ["agentAI"],
+  "clientRootFolder": "agentAI",
+  "databaseType": "mongodb",
+  "dto": "mapstruct",
+  "entityTableName": "rag_context",
+  "fields": [
+    {
+      "fieldName": "entityId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "entityName",
+      "fieldType": "EntityNameEnum",
+      "fieldValues": "PROPERTY (Property),CUSTOMER (Customer),RENTAL_CONTRACT (Rental)"
+    },
+    {
+      "fieldName": "contextText",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "agentAI",
+  "name": "RAGContext",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
