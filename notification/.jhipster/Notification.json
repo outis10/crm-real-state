@@ -1,0 +1,49 @@
+{
+  "annotations": {
+    "changelogDate": "20250226225723"
+  },
+  "applications": ["notification"],
+  "clientRootFolder": "notification",
+  "databaseType": "mongodb",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "entityId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "entityName",
+      "fieldType": "EntityNameEnum",
+      "fieldValues": "PROPERTY (Property),CUSTOMER (Customer),RENTAL_CONTRACT (Rental)"
+    },
+    {
+      "fieldName": "target",
+      "fieldType": "NotificationTargetEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "NEW,DISCOUNT,AD,OVERDUE,THANKS"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "NotificationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "NEW,SENT,VIEWED,FAILED"
+    },
+    {
+      "fieldName": "timestamp",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "notification",
+  "name": "Notification",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
